@@ -5,73 +5,87 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Undangan Pernikahan</title>
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <!-- Hubungkan CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Great+Vibes&family=Poppins:wght@300;400;600&family=Playfair+Display:wght@400;600;700&family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
 </head>
 <body>
-  <!-- Halaman Awal dengan Foto Background -->
+  <!-- Halaman Awal -->
   <section class="cover">
     <div class="overlay"></div>
-
     <p class="subtitle wedding-title">Ngunduh Mantu</p>
     <h1 class="names">Risma & Anggoro</h1>
     <p class="dear">Dear, <b>Tamu Undangan</b></p>
     <button class="open-btn">📩 OPEN INVITATION</button>
-
-    <!-- Countdown -->
     <div class="countdown">
       <div class="time-box"><span id="days">0</span><br>Hari</div>
       <div class="time-box"><span id="hours">0</span><br>Jam</div>
       <div class="time-box"><span id="minutes">0</span><br>Menit</div>
       <div class="time-box"><span id="seconds">0</span><br>Detik</div>
     </div>
-
     <p class="akad"><b>Akad:</b> 04 Oktober 2025 - Ciporos</p>
   </section>
 
-  <!-- Halaman Isi Undangan -->
-  <section class="invitation">
+  <!-- Halaman Kedua -->
+  <section class="invitation hidden">
     <div class="content">
+      <!-- Judul -->
       <h2 class="title">Ngunduh Mantu</h2>
-      <p class="intro">
-        Dengan memohon rahmat dan ridho Allah SWT,  
-        kami bermaksud mengundang Bapak/Ibu/Saudara/i  
-        untuk menghadiri acara Ngunduh Mantu putra-putri kami:
-      </p>
-
-      <div class="mempelai">
-        <h3>Risma & Anggoro</h3>
-        <p>Sabtu, 04 Oktober 2025</p>
+      
+      <!-- Galeri Foto -->
+      <div class="galeri">
+        <div class="foto"><img src="img/cover5.JPG" alt="Risma & Anggoro"></div>
+        <div class="foto"><img src="img/cover4.JPG" alt="Risma & Anggoro"></div>
+        <div class="foto"><img src="img/cover3.JPG" alt="Risma & Anggoro"></div>
+        <div class="foto"><img src="img/ABP_4496.JPG" alt="Risma & Anggoro"></div>
+        <div class="foto"><img src="img/foto5.jpg" alt="Risma & Anggoro"></div>
+        <div class="foto"><img src="img/foto6.jpg" alt="Risma & Anggoro"></div>
       </div>
 
-      <div class="detail-acara">
-        <h4>📍 Lokasi Acara</h4>
-        <p>Gedung Serbaguna Ciporos, Purwokerto</p>
-        <a href="https://maps.google.com" target="_blank" class="btn-map">Lihat Lokasi</a>
+      <!-- Nama Mempelai Baru -->
+      <div class="couple-names">
+        <h3 class="mempelai-nama">Agustian Anggoro & Diah Risma Aryani</h3>
+        <div class="parents">
+          <p class="groom-parents">Putra dari Bapak Sudarno, S.P dan Ibu Sri Kusrini, Spd SD</p>
+          <p class="bride-parents">Putri dari Bapak Aris Martono dan Ibu Ratmiyati</p>
+        </div>
       </div>
 
-      <div class="ucapan">
-        <h4>Ucapan & Doa</h4>
-        <p>
-          Silakan tinggalkan doa dan ucapan terbaik Anda untuk kedua mempelai  
-          melalui link berikut:
+      <!-- Save The Date -->
+      <div class="save-date">📅 Save the Date: 04 Oktober 2025</div>
+
+      <!-- Info Acara -->
+      <div class="info-acara">
+        <p class="pengantar">
+          Dengan memohon ridho dan rahmat Allah Ta'alla serta sebagai ungkapan rasa syukur, kami bermaksud mengadakan tasyakuran ngunduh mantu pernikahan, yang insya Allah akan diselenggarakan pada:
         </p>
-        <a href="https://forms.gle/xxxxxx" target="_blank" class="btn-ucapan">💌 Tulis Ucapan</a>
+        <div class="tanggal-acara">04 OKTOBER 2025</div>
+        <div class="jam-acara">Pukul 09.00</div>
+        <a href="https://maps.app.goo.gl/JhfXb7APVTifi4E18" target="_blank" class="alamat-link">
+          <img src="img/maps1.png" alt="Maps Lokasi" style="width: 50px; height:auto;">
+        </a>
+        <div class="alamat-keterangan">CIPOROS, CILACAP</div>
       </div>
 
-      <p class="penutup">
-        Merupakan suatu kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i  
-        berkenan hadir untuk memberikan doa restu.  
-        <br><br>
-        Hormat kami,  
-        <br>
-        Keluarga Besar Risma & Anggoro
-      </p>
+      <!-- Wishes Section -->
+      <section class="wishes">
+        <h2>Wishes</h2>
+        <form id="wishes-form">
+          <input type="text" name="from_name" placeholder="Your name" required>
+          <textarea name="message" placeholder="Your wishes..." required></textarea>
+          <button type="submit">Send</button>
+        </form>
+        <div id="wishes-list" class="wishes-container"></div>
+      </section>
+
+      <!-- Musik -->
+      <audio id="lagu" src="music.mp3/laguhal2.mp3" loop></audio>
     </div>
   </section>
 
-  <!-- Hubungkan JS -->
+  <!-- JS -->
   <script src="js/script.js"></script>
 </body>
 </html>
